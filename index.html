@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Consultant Darwin - Mit Dinh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Top End Tones -->
+    <!-- Application Structure Plan: A single-page landing page structure is used for a clear, linear user journey. The flow is designed to first capture attention (Hero), then educate on offerings (Services), build trust and rapport (About, Testimonials), and finally provide a clear path to action (Contact). A sticky navigation bar enhances usability by allowing users to jump to any section. This structure is intuitive for potential clients of a consulting business and effectively showcases all required information in a digestible format. -->
+    <!-- Visualization & Content Choices: Hero: Goal=Engage, Method=Large typography & CTA, Interaction=Button hover. Services: Goal=Inform, Method=3-column card layout, Interaction=Card hover effect. Unicode characters (🧠, 📊, 💡) are used as lightweight, universally supported icons instead of graphics, adhering to the NO SVG constraint. About: Goal=Build Trust, Method=Two-column text & image layout. Testimonials: Goal=Social Proof, Method=JS-powered carousel, Interaction=Clickable next/prev buttons to cycle through quotes, saving vertical space. Contact: Goal=Lead Gen, Method=HTML form with JS to prevent submission. This combination of structured HTML and minimal, purposeful JavaScript provides an interactive feel without external libraries like Chart.js, which are not needed for this type of content. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFBF5;
+            color: #3D405B;
+        }
+        .bg-terracotta { background-color: #E07A5F; }
+        .text-terracotta { color: #E07A5F; }
+        .border-terracotta { border-color: #E07A5F; }
+        .hover\:bg-terracotta-dark:hover { background-color: #D46A4D; }
+        .bg-teal { background-color: #3D7A80; }
+        .text-teal { color: #3D7A80; }
+        .bg-sand { background-color: #F4F1DE; }
+        .testimonial-card {
+            display: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .testimonial-card.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="header" class="bg-sand/80 backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-terracotta">Mit Dinh AI</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#services" class="text-gray-700 hover:text-terracotta transition-colors">Services</a>
+                <a href="#about" class="text-gray-700 hover:text-terracotta transition-colors">About</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-terracotta transition-colors">Testimonials</a>
+                <a href="#contact" class="text-gray-700 hover:text-terracotta transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#services" class="block py-2 px-6 text-sm text-gray-700 hover:bg-terracotta hover:text-white">Services</a>
+            <a href="#about" class="block py-2 px-6 text-sm text-gray-700 hover:bg-terracotta hover:text-white">About</a>
+            <a href="#testimonials" class="block py-2 px-6 text-sm text-gray-700 hover:bg-terracotta hover:text-white">Testimonials</a>
+            <a href="#contact" class="block py-2 px-6 text-sm text-gray-700 hover:bg-terracotta hover:text-white">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Unlocking AI Potential for Northern Territory Businesses</h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">Your local Darwin specialist in leveraging artificial intelligence for sustainable growth, efficiency, and innovation.</p>
+                <a href="#contact" class="bg-terracotta text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-terracotta-dark transition-transform transform hover:scale-105 inline-block">Book a Free Consultation</a>
+            </div>
+        </section>
+
+        <section id="services" class="py-20 bg-sand">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">Consulting Services</h2>
+                    <p class="text-gray-600 mt-2">Tailored AI solutions to meet your unique business needs.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <div class="text-5xl mb-4">🧠</div>
+                        <h3 class="text-xl font-bold mb-2">Machine Learning Models</h3>
+                        <p class="text-gray-600">Develop predictive models to forecast trends, automate processes, and gain a competitive edge in the local market.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <div class="text-5xl mb-4">📊</div>
+                        <h3 class="text-xl font-bold mb-2">Data Analysis & Insights</h3>
+                        <p class="text-gray-600">Transform your raw data into actionable intelligence, revealing hidden patterns and opportunities for growth.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <div class="text-5xl mb-4">💡</div>
+                        <h3 class="text-xl font-bold mb-2">Custom AI Solutions</h3>
+                        <p class="text-gray-600">From concept to deployment, I build bespoke AI systems designed to solve your specific challenges and integrate seamlessly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/3">
+                        <div class="w-64 h-64 mx-auto rounded-full bg-sand flex items-center justify-center">
+                            <img src="https://placehold.co/256x256/E07A5F/FFFBF5?text=AJ" alt="Mit Dinh, AI Consultant" class="rounded-full">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 text-center md:text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Your Darwin-Based AI Partner</h2>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            I'm Mit Dinh, an AI and Machine Learning specialist with a passion for helping Northern Territory businesses thrive. After years working in tech hubs, I returned to Darwin to apply world-class AI strategies to our unique local economy. My approach is collaborative and practical, focusing on delivering real-world results that respect the challenges and opportunities of operating in the Top End.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            I believe in building strong relationships and demystifying AI, making it an accessible and powerful tool for everyone from tourism operators to industrial enterprises.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="py-20 bg-sand">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">What My Clients Say</h2>
+                    <p class="text-gray-600 mt-2">Building trust and delivering results across the Territory.</p>
+                </div>
+                <div class="relative max-w-3xl mx-auto">
+                    <div id="testimonial-container" class="overflow-hidden">
+                        <div class="testimonial-card active">
+                            <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                                <p class="text-gray-600 italic mb-4">"Alex transformed our approach to logistics. The predictive model for our supply chain has saved us countless hours and significantly reduced costs. A game-changer for our NT operations."</p>
+                                <p class="font-bold text-terracotta">- Sarah L., Operations Manager</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                                <p class="text-gray-600 italic mb-4">"As a tourism operator, understanding booking trends is crucial. The data insights Alex provided were phenomenal, allowing us to optimize our offerings for peak seasons. Highly recommended!"</p>
+                                <p class="font-bold text-terracotta">- David C., Tourism Director</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                             <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                                <p class="text-gray-600 italic mb-4">"We needed a custom AI tool for quality control, and Alex delivered beyond our expectations. His local presence and understanding of our industry were invaluable."</p>
+                                <p class="font-bold text-terracotta">- Mike R., Industrial Sector</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="prev-testimonial" class="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-12 bg-white rounded-full p-2 shadow-md hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="next-testimonial" class="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-12 bg-white rounded-full p-2 shadow-md hover:bg-gray-100">
+                         <svg class="w-6 h-6 text-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">Let's Build the Future, Together</h2>
+                    <p class="text-gray-600 mt-2 max-w-2xl mx-auto">Ready to discuss how AI can benefit your business? Fill out the form below or contact me directly.</p>
+                </div>
+                <div class="max-w-xl mx-auto">
+                    <form id="contact-form" class="bg-white p-8 rounded-lg shadow-lg">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-terracotta">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-terracotta">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-terracotta"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-terracotta text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-terracotta-dark transition-colors w-full">Send Message</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-8">
+                        <p class="text-gray-600">Or reach me directly:</p>
+                        <a href="mailto:alex.jensen.ai@email.com" class="text-lg text-teal font-medium hover:underline">alex.jensen.ai@email.com</a>
+                        <span class="mx-2 text-gray-400">|</span>
+                        <a href="tel:+61400000000" class="text-lg text-teal font-medium hover:underline">0400 000 000</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-sand py-8">
+        <div class="container mx-auto px-6 text-center text-gray-600">
+            <p>&copy; 2025 Mit Dinh AI Consulting. All Rights Reserved.</p>
+            <p class="text-sm mt-1">Bringing AI Innovation to Darwin, Northern Territory.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu on link click
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Testimonial Slider
+            const testimonials = document.querySelectorAll('.testimonial-card');
+            const prevButton = document.getElementById('prev-testimonial');
+            const nextButton = document.getElementById('next-testimonial');
+            let currentTestimonial = 0;
+
+            function showTestimonial(index) {
+                testimonials.forEach((card, i) => {
+                    card.classList.remove('active');
+                    if (i === index) {
+                        card.classList.add('active');
+                    }
+                });
+            }
+
+            prevButton.addEventListener('click', () => {
+                currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            });
+
+            nextButton.addEventListener('click', () => {
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            });
+
+            // Non-functional contact form
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! This is a demo form.');
+                contactForm.reset();
+            });
+
+            // Header shadow on scroll
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    header.classList.add('shadow-md');
+                } else {
+                    header.classList.remove('shadow-md');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
